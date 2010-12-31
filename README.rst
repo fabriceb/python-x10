@@ -51,16 +51,16 @@ API Example
 
  # Retrieve USB CM15 Device
  scanner = USBScanner()
- dev = scanner.findDevices()
- dev.open()
+ controller = scanner.findController()
+ controller.open()
 
  # Use a single module
- lamp = dev.actuator("A2")
+ lamp = controller.actuator("A2")
  lamp.dim(10)
  lamp.off()
  
  # Use a group
- house = dev.house("B")
+ house = controller.house("B")
  house.lightsOff()
 
 More samples in tests.

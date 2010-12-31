@@ -5,7 +5,7 @@ from .cm15 import CM15
 class USBScanner(object):
     devices = (CM15,)
 
-    def findDevices(self):
+    def findController(self):
         busses = usb.busses()
         for bus in busses:
             for dev in bus.devices:
