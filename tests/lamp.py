@@ -1,5 +1,4 @@
 from x10.controllers.bus import USBScanner
-from x10.protocol import functions
 
 b = USBScanner()
 dev = b.findDevices()
