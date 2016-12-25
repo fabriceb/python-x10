@@ -50,14 +50,14 @@ class X10Controller(object):
         Read an amount of bytes from the controller
         """
         res = self._handle.bulkRead(self.read_endpoint, bytes)
-        logger.info( "Read", ["0x%02x" % i for i in res])
+        logger.info( "Read " + " ".join(["0x%02x" % i for i in res]))
         return res
 
     def write(self, aSequence):
         """
         Write a sequence of bytes to the interface
         """
-        logger.info("writing", ["0x%02x" % i for i in aSequence])
+        logger.info("writing " + " ".join(["0x%02x" % i for i in aSequence]))
 
         packets = struct.pack("%dB" % len(aSequence), *aSequence)
         wrote = self._handle.bulkWrite(self.write_endpoint,
@@ -67,7 +67,7 @@ class X10Controller(object):
             raise WriteError("Unable to write to CM15")
 
         # Wait for the controller
-        time.sleep(1*(len(aSequence)))
+        time.sleep(0.3*(len(aSequence)))
 
 
     def actuator(self, x10addr, aX10ActuatorKlass=None):
